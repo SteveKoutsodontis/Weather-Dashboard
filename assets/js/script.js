@@ -73,39 +73,39 @@ const getWeatherData = (city) => {
     fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=9269e7b9a6f4461a2d2de25c5288d244`
     )
-    .then ((response) => response.json())
-    .then ((data)  => {
-        console.log(data)
-        temp.innerHTML = `${data.main.temp}°F`;
-        windSpeed.innerHTML = data.wind.speed;
-        humidity.innerHTML = data.main.humidity;
-        cityChosen.innerHTML = data.name;
-        const iconCodeMain = data.weather[0].icon;
-        const iconUrlMain = "http://openweathermap.org/img/w/" + iconCodeMain + ".png";
-        $('#img-main').attr('src', iconUrlMain);
-
-        const lat = data.coord.lat;
-        const lon = data.coord.lon;
-
-        fetch(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=9269e7b9a6f4461a2d2de25c5288d244`
-        )
         .then((response) => response.json())
-        .then ((data)  => {
-            uvIndex.innerHTML = data.current.uvi;
+        .then((data) => {
+            console.log(data)
+            temp.innerHTML = `${data.main.temp}°F`;
+            windSpeed.innerHTML = data.wind.speed;
+            humidity.innerHTML = data.main.humidity;
+            cityChosen.innerHTML = data.name;
+            const iconCodeMain = data.weather[0].icon;
+            const iconUrlMain = "http://openweathermap.org/img/w/" + iconCodeMain + ".png";
+            $('#img-main').attr('src', iconUrlMain);
+
+            const lat = data.coord.lat;
+            const lon = data.coord.lon;
+
+            fetch(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=9269e7b9a6f4461a2d2de25c5288d244`
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    uvIndex.innerHTML = data.current.uvi;
+                });
         });
-    });
 
     fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=9269e7b9a6f4461a2d2de25c5288d244`
     )
         .then((response) => response.json())
-        .then ((data) => {
+        .then((data) => {
             for (let i = 0; i < data.list.length; i++) {
                 if (data.list[i].dt_txt.indexOf("18:00:00") !== -1) {
                     console.log(data.list[i]);
 
-                    firstDayDate.innerHTML = data.list[7].dt_txt.substr(0,10);
+                    firstDayDate.innerHTML = data.list[7].dt_txt.substr(0, 10);
                     firstTempDate.innerHTML = `${data.list[7].main.temp}°F`;
                     firstWindDate.innerHTML = data.list[7].wind.speed;
                     firstHumidityDate.innerHTML = data.list[7].main.humidity;
@@ -113,7 +113,7 @@ const getWeatherData = (city) => {
                     const iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
                     $('#Img0').attr('src', iconUrl);
 
-                    secondDayDate.innerHTML = data.list[15].dt_txt.substr(0,10);
+                    secondDayDate.innerHTML = data.list[15].dt_txt.substr(0, 10);
                     secondTempDate.innerHTML = `${data.list[15].main.temp}°F`;
                     secondWindDate.innerHTML = data.list[15].wind.speed;
                     secondHumidityDate.innerHTML = data.list[15].main.humidity;
@@ -121,7 +121,7 @@ const getWeatherData = (city) => {
                     const iconUrlOne = "http://openweathermap.org/img/w/" + iconCodeOne + ".png";
                     $('#Img1').attr('src', iconUrlOne);
 
-                    thirdDayDate.innerHTML = data.list[23].dt_txt.substr(0,10);
+                    thirdDayDate.innerHTML = data.list[23].dt_txt.substr(0, 10);
                     thirdTempDate.innerHTML = `${data.list[23].main.temp}°F`;
                     thirdWindDate.innerHTML = data.list[23].wind.speed;
                     thirdHumidityDate.innerHTML = data.list[23].main.humidity;
@@ -129,7 +129,7 @@ const getWeatherData = (city) => {
                     const iconUrlTwo = "http://openweathermap.org/img/w/" + iconCodeTwo + ".png";
                     $('#Img2').attr('src', iconUrlTwo);
 
-                    fourthDayDate.innerHTML = data.list[31].dt_txt.substr(0,10);
+                    fourthDayDate.innerHTML = data.list[31].dt_txt.substr(0, 10);
                     fourthTempDate.innerHTML = `${data.list[31].main.temp}°F`;
                     fourthWindDate.innerHTML = data.list[31].wind.speed;
                     fourthHumidityDate.innerHTML = data.list[31].main.humidity;
@@ -137,7 +137,7 @@ const getWeatherData = (city) => {
                     const iconUrlThree = "http://openweathermap.org/img/w/" + iconCodeThree + ".png";
                     $('#Img3').attr('src', iconUrlThree);
 
-                    fifthDayDate.innerHTML = data.list[39].dt_txt.substr(0,10);
+                    fifthDayDate.innerHTML = data.list[39].dt_txt.substr(0, 10);
                     fifthTempDate.innerHTML = `${data.list[39].main.temp}°F`;
                     fifthWindDate.innerHTML = data.list[39].wind.speed;
                     fifthHumidityDate.innerHTML = data.list[39].main.humidity;
