@@ -16,11 +16,11 @@
 
 ## Deployed Link
 
-[Weather-Dashboard]()
+[Weather-Dashboard](https://stevekoutsodontis.github.io/Weather-Dashboard/)
 
 ## Screen Shots
 
-![Screenshot]()
+![Screenshot](./assets/images/WD_SS1.PNG)
 
 ### License: 
  
